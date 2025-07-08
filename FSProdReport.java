@@ -1,101 +1,112 @@
-import java.util.Scanner;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Scanner;
 
-public class FSProdReportGenerator {
-    public static void main(String[] args) {
+public class FSProdReport {
+    public static void main(String[] args){
         Scanner sc = new Scanner(System.in);
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         String reportDate = LocalDate.now().format(formatter);
 
-        // Collect inputs step-by-step
-
-        // Containers
-        System.out.print("Enter running containers count in PS: ");
+        System.out.print("Enter running containers count in PS(expected 61): ");
         int psContainers = sc.nextInt();
-        System.out.print("Enter running containers count in NS: ");
+        System.out.print("Enter running containers count in NS(expected 58): ");
         int nsContainers = sc.nextInt();
-        System.out.print("Enter running containers count in FEED PS: ");
+        System.out.print("Enter running containers count in FEED PS(expected 14): ");
         int feedPsContainers = sc.nextInt();
-        System.out.print("Enter running containers count in FEED NS: ");
+        System.out.print("Enter running containers count in FEED NS(expected 13): ");
         int feedNsContainers = sc.nextInt();
+        boolean hasIssue = psContainers < 61 || nsContainers < 58 || feedPsContainers < 14 || feedNsContainers < 13;
 
-        sc.nextLine(); // consume newline
+        sc.nextLine();
 
-        // Storage
         System.out.print("Enter available storage in GB in PS 'data2': ");
-        String storagePsAvailable = sc.nextLine();
+        int storagePsAvailable = sc.nextInt();
         System.out.print("Enter used storage % in PS 'data2': ");
-        String storagePsUsed = sc.nextLine();
+        int storagePsUsed = sc.nextInt();
         System.out.print("Enter available storage in GB in NS 'data2': ");
-        String storageNsAvailable = sc.nextLine();
+        int storageNsAvailable = sc.nextInt();
         System.out.print("Enter used storage % in NS 'data2': ");
-        String storageNsUsed = sc.nextLine();
+        int storageNsUsed = sc.nextInt();
         System.out.print("Enter available storage in GB in FEED PS '/': ");
-        String storageFeedPsAvailable = sc.nextLine();
+        int storageFeedPsAvailable = sc.nextInt();
         System.out.print("Enter used storage % in FEED PS '/': ");
-        String storageFeedPsUsed = sc.nextLine();
+        int storageFeedPsUsed = sc.nextInt();
         System.out.print("Enter available storage in GB in FEED NS '/': ");
-        String storageFeedNsAvailable = sc.nextLine();
+        int storageFeedNsAvailable = sc.nextInt();
         System.out.print("Enter used storage % in FEED NS '/': ");
-        String storageFeedNsUsed = sc.nextLine();
+        int storageFeedNsUsed = sc.nextInt();
+        boolean hasStorageIssue = storagePsUsed > 75 || storageNsUsed > 75 || storageFeedPsUsed > 75|| storageFeedNsUsed > 75;
 
-        // RAM
+        sc.nextLine();
+
         System.out.print("Enter used RAM % in PS: ");
-        String ramPs = sc.nextLine();
+        float ramPs = sc.nextFloat();
         System.out.print("Enter used RAM % in NS: ");
-        String ramNs = sc.nextLine();
+        float ramNs = sc.nextFloat();
         System.out.print("Enter used RAM % in FEED PS: ");
-        String ramFeedPs = sc.nextLine();
+        float ramFeedPs = sc.nextFloat();
         System.out.print("Enter used RAM % in FEED NS: ");
-        String ramFeedNs = sc.nextLine();
+        float ramFeedNs = sc.nextFloat();
+        
+        boolean hasRamIssue = ramPs > 75 || ramNs > 75 || ramFeedPs > 75 || ramFeedNs > 75;
 
-        // External files count
+
+        sc.nextLine();
+
         System.out.print("Enter number of external files downloaded (expected 17): ");
         int externalFilesCount = sc.nextInt();
 
-        sc.nextLine(); // consume newline
+        sc.nextLine();
 
-        // Feeders count PS
+        System.out.println("Opensearch data is available or not: ");
+        String Opensearchdata = sc.next();
+
+        sc.nextLine();
+
         System.out.print("Enter number of feeders connected in PS (expected 8): ");
         int feedersPs = sc.nextInt();
 
-        // Feeders count NS
+        sc.nextLine();
+
         System.out.print("Enter number of feeders connected in NS (expected 8): ");
         int feedersNs = sc.nextInt();
 
-        sc.close();
+        sc.nextLine();
 
-        // Now generate the final report
+        sc.close();
 
         int totalContainers = psContainers + nsContainers + feedPsContainers + feedNsContainers;
 
         System.out.println("\nFS PROD Report (" + reportDate + "):\n");
 
         System.out.println("1) Running containers i.e., "
-                + psContainers + " in PS | "
-                + nsContainers + " in NS | FEED PS "
-                + feedPsContainers + " | FEED NS  "
-                + feedNsContainers + " => Total " + totalContainers + ".");
+            + psContainers + " in PS | "
+            + nsContainers + " in NS | FEED PS "
+            + feedPsContainers + " | FEED NS "
+            + feedNsContainers + " => Total " + totalContainers
+            + (hasIssue ? ".=> Issue" : "."));
 
         System.out.println("2) Storage is also available i.e., "
-                + storagePsAvailable + " Gb available and Used is "
-                + storagePsUsed + "% in 'data2' => PS| "
-                + storageNsAvailable + " Gb available and used is "
-                + storageNsUsed + "% in 'data2'  => NS | "
-                + storageFeedPsAvailable + " Gb and Used is "
-                + storageFeedPsUsed + "% in '/' => FEED PS | "
-                + storageFeedNsAvailable + " Gb and used is "
-                + storageFeedNsUsed + "% in '/' => FEED NS.");
+            + storagePsAvailable + " Gb available and Used is "
+            + storagePsUsed + "% in 'data2' => PS| "
+            + storageNsAvailable + " Gb available and used is "
+            + storageNsUsed + "% in 'data2'  => NS | "
+            + storageFeedPsAvailable + " Gb and Used is "
+            + storageFeedPsUsed + "% in '/' => FEED PS | "
+            + storageFeedNsAvailable + " Gb and used is "
+            + storageFeedNsUsed + "% in '/' => FEED NS."
+            + (hasStorageIssue ? "=> Issue" : ""));
 
         System.out.println("3) All the required files are downloaded in both hsinteractive and hsbroadcast in PS | NS | FEED PS | FEED NS.");
 
         System.out.println("4) RAM is also available i.e., used RAM is "
-                + ramPs + "% in PS | "
-                + ramNs + "% in NS | "
-                + ramFeedPs + "% in FEED PS | "
-                + ramFeedNs + "% in FEED NS.");
+            + ramPs + "% in PS | "
+            + ramNs + "% in NS | "
+            + ramFeedPs + "% in FEED PS | "
+            + ramFeedNs + "% in FEED NS."
+            + (hasRamIssue ? "=> Issue" : ""));
 
         System.out.println("5) Data is coming in both webclient and hypertrade. Able to login in hypertrade also chart is displaying proper data and no data is missing.");
 
@@ -104,12 +115,17 @@ public class FSProdReportGenerator {
         System.out.println("7) The login page is working fine in brokeradmin.");
 
         if (externalFilesCount == 17) {
-            System.out.println("8) All 17 external files are downloaded successfully.");
+            System.out.println("8 ) All 17 external files are downloaded successfully.");
         } else {
             System.out.println("8) Only " + externalFilesCount + " external files are downloaded.");
         }
 
-        System.out.println("9) Yesterday's data is available in Opensearch.");
+        if (Opensearchdata.equalsIgnoreCase("yes")){
+            System.out.println("9) Yesterday's data is available in Opensearch.");
+        }
+        else{
+            System.out.println("9) Yesterday's data is available in Opensearch. Data is available from . => Issue");
+        }
 
         if (feedersPs == 8) {
             System.out.println("10) All 8 feeders are connected in PS.");

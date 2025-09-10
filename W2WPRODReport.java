@@ -222,7 +222,7 @@ public class W2WPRODReport {
             System.out.println("13) Only " + feedersNsKafka + " feeders are connected in NS Kafka. => Issue");
         }
         if (feedersNsIgnite == 8) {
-            System.out.println("13) All 8 feeders are connected in NS Ignite.");
+            System.out.println("14 ) All 8 feeders are connected in NS Ignite.");
         } else {
             System.out.println("14) Only " + feedersNsIgnite + " feeders are connected in NS Ignite. => Issue");
         }

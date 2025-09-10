@@ -9,10 +9,10 @@ public class W2WUATReport {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         String reportDate = LocalDate.now().format(formatter);
 
-        System.out.print("Enter running containers count (expected 70): ");
+        System.out.print("Enter running containers count (expected 71): ");
         int Containers = sc.nextInt();
         
-        boolean hasIssue = Containers < 70;
+        boolean hasIssue = Containers != 71;
 
         sc.nextLine();
 

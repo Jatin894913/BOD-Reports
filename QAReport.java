@@ -9,9 +9,9 @@ public class QAReport {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         String reportDate = LocalDate.now().format(formatter);
 
-        System.out.print("Enter running containers count in QA(expected 61): ");
+        System.out.print("Enter running containers count in QA(expected 73): ");
         int QAContainers = sc.nextInt();
-        boolean hasIssue = QAContainers != 61;
+        boolean hasIssue = QAContainers != 73;
 
         sc.nextLine();
 

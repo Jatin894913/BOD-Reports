@@ -17,7 +17,7 @@ public class FSProdReport {
         int feedPsContainers = sc.nextInt();
         System.out.print("Enter running containers count in FEED NS(expected 13): ");
         int feedNsContainers = sc.nextInt();
-        boolean hasIssue = psContainers < 61 || nsContainers < 58 || feedPsContainers < 14 || feedNsContainers < 13;
+        boolean hasIssue = psContainers != 61 || nsContainers != 58 || feedPsContainers != 14 || feedNsContainers != 13;
 
         sc.nextLine();
 
@@ -90,14 +90,21 @@ public class FSProdReport {
 
         System.out.println("2) Storage is also available i.e., "
             + storagePsAvailable + " Gb available and Used is "
-            + storagePsUsed + "% in 'data2' => PS| "
+            + storagePsUsed + "% in 'data2' => PS"
+            + (storagePsUsed > 75 ? " => Issue" : "") + " | \n"
+            
             + storageNsAvailable + " Gb available and used is "
-            + storageNsUsed + "% in 'data2'  => NS | "
+            + storageNsUsed + "% in 'data2' => NS"
+            + (storageNsUsed > 75 ? " => Issue" : "") + " | \n"
+
             + storageFeedPsAvailable + " Gb and Used is "
-            + storageFeedPsUsed + "% in '/' => FEED PS | "
+            + storageFeedPsUsed + "% in '/' => FEED PS"
+            + (storageFeedPsUsed > 75 ? " => Issue" : "") + " | \n"
+            
             + storageFeedNsAvailable + " Gb and used is "
-            + storageFeedNsUsed + "% in '/' => FEED NS."
-            + (hasStorageIssue ? "=> Issue" : ""));
+            + storageFeedNsUsed + "% in '/' => FEED NS"
+            + (storageFeedNsUsed > 75 ? " => Issue" : "") + ".");
+
 
         System.out.println("3) All the required files are downloaded in both hsinteractive and hsbroadcast in PS | NS | FEED PS | FEED NS.");
 

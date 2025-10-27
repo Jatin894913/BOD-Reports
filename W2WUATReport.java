@@ -40,6 +40,11 @@ public class W2WUATReport {
         String Opensearchdata = sc.next();
 
         sc.nextLine();
+        
+        System.out.print("Enter number of external files downloaded (expected 17): ");
+        int externalFilesCount = sc.nextInt();
+
+        sc.nextLine();
 
         sc.close();
 
@@ -76,6 +81,11 @@ public class W2WUATReport {
         else{
             System.out.println("8 ) Yesterday's data is available in Opensearch. Data is available from . => Issue");
         }
-    }
 
+        if (externalFilesCount == 17) {
+            System.out.println("9) All 17 external files are downloaded successfully.");
+        } else {
+            System.out.println("9) Only " + externalFilesCount + " external files are downloaded.");
+        }
+    }
 }

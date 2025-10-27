@@ -124,7 +124,7 @@ public class FSProdReport {
         if (externalFilesCount == 17) {
             System.out.println("8 ) All 17 external files are downloaded successfully.");
         } else {
-            System.out.println("8) Only " + externalFilesCount + " external files are downloaded.");
+            System.out.println("8 ) Only " + externalFilesCount + " external files are downloaded.");
         }
 
         if (Opensearchdata.equalsIgnoreCase("yes")){
@@ -136,14 +136,20 @@ public class FSProdReport {
 
         if (feedersPs == 8) {
             System.out.println("10) All 8 feeders are connected in PS.");
-        } else {
+        } else if (0 < feedersPs && feedersPs < 8){
             System.out.println("10) Only " + feedersPs + " feeders are connected in PS. => Issue");
+        }
+        else {
+            System.out.println("10) No feeders are connected in PS. => Issue");
         }
 
         if (feedersNs == 8) {
             System.out.println("11) All 8 feeders are connected in NS.");
-        } else {
+        } else if (0 < feedersNs && feedersNs < 8){
             System.out.println("11) Only " + feedersNs + " feeders are connected in NS. => Issue");
+        }
+        else {
+            System.out.println("11) No feeders are connected in NS. => Issue.");
         }
     }
 }

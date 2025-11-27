@@ -124,7 +124,7 @@ public class W2WPRODReport {
             + storageDrrootAvailable + "Gb available and used is "
             + storageDrrootUsed + "% in '/' & "
             + storageDrAvailable + "Gb available and used is "
-            + storageDrUsed + "% in 'data'  => DR |\n "
+            + storageDrUsed + "% in 'data'  => DR "
             
             + (hasStorageIssue ? "=> Issue" : ""));
 

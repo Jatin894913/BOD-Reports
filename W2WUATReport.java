@@ -9,10 +9,10 @@ public class W2WUATReport {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         String reportDate = LocalDate.now().format(formatter);
 
-        System.out.print("Enter running containers count (expected 71): ");
+        System.out.print("Enter running containers count (expected 72): ");
         int Containers = sc.nextInt();
         
-        boolean hasIssue = Containers != 71;
+        boolean hasIssue = Containers != 72;
 
         sc.nextLine();
 
@@ -85,7 +85,7 @@ public class W2WUATReport {
         if (externalFilesCount == 17) {
             System.out.println("9) All 17 external files are downloaded successfully.");
         } else {
-            System.out.println("9) Only " + externalFilesCount + " external files are downloaded.");
+            System.out.println("9) Only " + externalFilesCount + " external files are downloaded. => Issue");
         }
     }
 }

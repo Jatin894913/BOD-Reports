@@ -76,11 +76,13 @@ public class FSUATReport {
             + storagePsrootAvailable + " Gb available and Used is "
             + storagePsrootUsed + "% in '/' => PS| "
             + storagePsAvailable + " Gb available and used is "
-            + storagePsUsed + "% in 'data1'  => PS | "
+            + storagePsUsed + "% in 'data1'  => PS | \n"
+
             + storageNsrootAvailable + " Gb and Used is "
             + storageNsrootUsed + "% in '/' => NS | "
             + storageNsAvailable + " Gb and used is "
-            + storageNsUsed + "% in 'data1' => NS."
+            + storageNsUsed + "% in 'data1' => NS.\n"
+
             + (hasStorageIssue ? "=> Issue" : ""));
 
         System.out.println("3) All the required files are downloaded in both hsinteractive and hsbroadcast in PS | NS.");

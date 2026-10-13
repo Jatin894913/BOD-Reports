@@ -1,0 +1,19 @@
+# Environment files and secrets
+.env
+common.env
+**/bod.env
+
+# Python generated files
+__pycache__/
+*.py[cod]
+
+# Logs and generated output
+*.log
+collector_output.txt
+
+# Local archives
+*.zip
+
+# Java compiled files
+*.class
+out/

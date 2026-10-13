@@ -1,0 +1,14 @@
+
+W2W UAT Report (28/04/2026):
+
+1) Running containers: 86 => Expected 86.
+2) Storage Status: 100Gb available and Used is 10% in '/' & 100Gb available and Used is 10% in 'data'.
+3) All required files are downloaded in hsinteractive and hsbroadcast.
+4) RAM Status: 25.0%.
+5) Data flow validated in webclient and hypertrade.
+6) Superadmin is working properly.
+7) Brokeradmin login page is functional.
+8) Yesterday's data is available in Opensearch..
+9) All 8 feeders are connected in Kafka.
+10) All 8 feeders are connected in Ignite.
+11) All 17 external files are downloaded successfully.
